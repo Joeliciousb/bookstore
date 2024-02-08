@@ -3,31 +3,34 @@
 <head>
 <title>List of Books</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
 </head>
 <body style="padding: 8px">
 	<h1>Books</h1>
 	<p>
-		<table>
+		<table class="table table-striped">
 			<tbody>
 				<tr>
-					<th style="text-align: left">Title</th>
-					<th style="text-align: left">Author</th>
-					<th style="text-align: left">Publication</th>
-					<th style="text-align: left">ISBN</th>
-					<th style="text-align: left">Price (€)</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Publication</th>
+					<th >ISBN</th>
+					<th>Price (€)</th>
 					<th></th>
 				</tr>
 				<tr th:each="book : ${listOfBooks}">
-					<td style="padding-right: 8px;" th:text="${book.getTitle()}">Title</td>
-					<td style="padding-right: 8px;" th:text="${book.getAuthor()}">Author</td>
-					<td style="padding-right: 8px;" th:text="${book.getPublicationYear()}">PublicationYear</td>
-					<td style="padding-right: 8px;" th:text="${book.getIsbn()}">ISBN</td>
-					<td style="padding-right: 8px;" th:text="${book.getPrice()}">Price</td>
-					<td><a th:href="@{/deletebook/{id}(id=${book.id})}">Delete</a></td>			
+					<td th:text="${book.getTitle()}">Title</td>
+					<td th:text="${book.getAuthor()}">Author</td>
+					<td th:text="${book.getPublicationYear()}">PublicationYear</td>
+					<td th:text="${book.getIsbn()}">ISBN</td>
+					<td th:text="${book.getPrice()}">Price</td>
+					<td>
+						<button type="button" class="btn btn-danger" th:onclick="|window.location.href='/deletebook/${book.id}'|">Delete</button>
+					</td>											
 					</tr>
 			</tbody>
 		</table>	
 	</p>
-	<p><a th:href="@{/addbook}">New Book</a></p>
+	<p><button type="button" class="btn btn-success" th:onclick="window.location.href='/addbook'">New Book</button></p>
 </body>
 </html>
