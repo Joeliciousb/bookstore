@@ -27,6 +27,10 @@ public class Book {
         this.price = price;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }

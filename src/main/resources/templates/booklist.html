@@ -15,6 +15,7 @@
 					<th style="text-align: left">Publication</th>
 					<th style="text-align: left">ISBN</th>
 					<th style="text-align: left">Price (€)</th>
+					<th></th>
 				</tr>
 				<tr th:each="book : ${listOfBooks}">
 					<td style="padding-right: 8px;" th:text="${book.getTitle()}">Title</td>
@@ -22,10 +23,11 @@
 					<td style="padding-right: 8px;" th:text="${book.getPublicationYear()}">PublicationYear</td>
 					<td style="padding-right: 8px;" th:text="${book.getIsbn()}">ISBN</td>
 					<td style="padding-right: 8px;" th:text="${book.getPrice()}">Price</td>
-				</tr>
+					<td><a th:href="@{/deletebook/{id}(id=${book.id})}">Delete</a></td>			
+					</tr>
 			</tbody>
-		</table>
-		
+		</table>	
 	</p>
+	<p><a th:href="@{/addbook}">New Book</a></p>
 </body>
 </html>
