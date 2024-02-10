@@ -17,6 +17,7 @@
 					<th >ISBN</th>
 					<th>Price (€)</th>
 					<th></th>
+					<th></th>
 				</tr>
 				<tr th:each="book : ${listOfBooks}">
 					<td th:text="${book.getTitle()}">Title</td>
@@ -26,7 +27,10 @@
 					<td th:text="${book.getPrice()}">Price</td>
 					<td>
 						<button type="button" class="btn btn-danger" th:onclick="|window.location.href='/deletebook/${book.id}'|">Delete</button>
-					</td>											
+					</td>	
+					<td>
+						<button type="button" class="btn btn-secondary" th:onclick="|window.location.href='/editbook/${book.id}'|">Edit</button>
+					</td>										
 					</tr>
 			</tbody>
 		</table>	

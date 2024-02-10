@@ -31,6 +31,10 @@ public class Book {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -78,6 +82,7 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", publicationYear=" + publicationYear +
                 ", isbn='" + isbn + '\'' +
-                ", price=" + price;
+                ", price='" + price + '\'' +
+                ", id=" + id;
     }
 }
