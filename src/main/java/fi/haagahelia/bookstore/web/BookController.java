@@ -47,9 +47,8 @@ public class BookController {
     }
 
     @PostMapping(value = { "/savechanges" })
-    public String getSaveChanges(@ModelAttribute Book book) {
+    public String postSaveChanges(@ModelAttribute Book book) {
         bookRepository.save(book);
         return "redirect:/booklist";
     }
-
 }
