@@ -20,17 +20,19 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner demo(BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return (args) -> {
-			Book book1 = new Book("The Hidden Secrets", "Jane Doe", 2023, "978-1-234567-89-0", 12.99);
-			Book book2 = new Book("Echoes of Destiny", "John Smith", 2021, "978-0-987654-32-1", 15.49);
-			bookRepository.save(book1);
-			bookRepository.save(book2);
 
-			Category category1 = new Category("scifi");
-			Category category2 = new Category("comic");
-			Category category3 = new Category("science");
+			Category category1 = new Category("Scifi");
+			Category category2 = new Category("Thriller");
+			Category category3 = new Category("Novel");
 			categoryRepository.save(category1);
 			categoryRepository.save(category2);
 			categoryRepository.save(category3);
+
+			Book book1 = new Book("The Hidden Secrets", "Jane Doe", 2023, "978-1-234567-89-0", 12.99, category2);
+			Book book2 = new Book("Echoes of Destiny", "John Smith", 2021, "978-0-987654-32-1", 15.49, category3);
+			bookRepository.save(book1);
+			bookRepository.save(book2);
+
 		};
 
 	}
