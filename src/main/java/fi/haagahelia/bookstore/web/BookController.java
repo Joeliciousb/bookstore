@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import fi.haagahelia.bookstore.domain.Book;
 import fi.haagahelia.bookstore.domain.BookRepository;
+import fi.haagahelia.bookstore.domain.CategoryRepository;
+
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class BookController {
     @Autowired
     BookRepository bookRepository;
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @GetMapping(value = { "*", "/booklist" })
     public String getBooks(Model model) {
@@ -25,6 +30,7 @@ public class BookController {
     @GetMapping(value = { "/addbook" })
     public String getAddBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
