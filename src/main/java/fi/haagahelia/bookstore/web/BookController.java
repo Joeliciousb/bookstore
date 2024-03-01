@@ -21,7 +21,7 @@ public class BookController {
     @Autowired
     CategoryRepository categoryRepository;
 
-    @GetMapping(value = { "*", "/booklist" })
+    @GetMapping(value = { "/booklist" })
     public String getBooks(Model model) {
         model.addAttribute("listOfBooks", bookRepository.findAll());
         return "booklist";
