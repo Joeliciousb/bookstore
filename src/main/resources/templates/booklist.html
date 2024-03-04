@@ -26,7 +26,7 @@
 					<td th:text="${book.getPublicationYear()}">PublicationYear</td>
 					<td th:text="${book.getIsbn()}">ISBN</td>
 					<td th:text="${book.getPrice()}">Price</td>
-					<td th:text="${book.category.getName()}">Category</td>
+					<td th:text="${book.category} ? ${book.category.getName()} : ''">Category</td>
 					<td>
 						<button type="button" class="btn btn-danger" th:onclick="|window.location.href='/deletebook/${book.id}'|">Delete</button>
 					</td>	
