@@ -1,12 +1,20 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <title>List of Books</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
 </head>
 <body style="padding: 8px">
+	<div style="display: flex; justify-content: space-between;">
 	<h1>Books</h1>
+		<h3>Welcome <span sec:authentication="name"></span></h3>
+	<div style="width: fit-content">
+		<form th:action="@{/logout}" method="post" >
+			<input type="submit" value="Sign Out" class="btn btn-sm btn-danger"/>
+		</form>
+	</div>
+	</div>
 	<p>
 		<table class="table table-striped">
 			<tbody>
@@ -27,7 +35,7 @@
 					<td th:text="${book.getIsbn()}">ISBN</td>
 					<td th:text="${book.getPrice()}">Price</td>
 					<td th:text="${book.category} ? ${book.category.getName()} : ''">Category</td>
-					<td>
+					<td sec:authorize="hasRole('ADMIN')">
 						<button type="button" class="btn btn-danger" th:onclick="|window.location.href='/deletebook/${book.id}'|">Delete</button>
 					</td>	
 					<td>

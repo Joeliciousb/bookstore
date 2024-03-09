@@ -1,6 +1,7 @@
 package fi.haagahelia.bookstore.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,11 @@ public class BookController {
         return "booklist";
     }
 
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "login";
+    }
+
     @GetMapping(value = { "/addbook" })
     public String getAddBook(Model model) {
         model.addAttribute("book", new Book());
@@ -41,6 +47,7 @@ public class BookController {
     }
 
     @GetMapping(value = { "/deletebook/{id}" })
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteBook(@PathVariable Integer id) {
         bookRepository.deleteById(id);
         return "redirect:/booklist";
