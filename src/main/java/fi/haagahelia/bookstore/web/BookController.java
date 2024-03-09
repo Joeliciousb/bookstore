@@ -47,7 +47,7 @@ public class BookController {
     }
 
     @GetMapping(value = { "/deletebook/{id}" })
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteBook(@PathVariable Integer id) {
         bookRepository.deleteById(id);
         return "redirect:/booklist";

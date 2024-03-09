@@ -25,7 +25,7 @@
 					<th >ISBN</th>
 					<th>Price (€)</th>
 					<th>Category</th>
-					<th></th>
+					<th sec:authorize="hasAuthority('ADMIN')"> </th>
 					<th></th>
 				</tr>
 				<tr th:each="book : ${listOfBooks}">
@@ -35,7 +35,7 @@
 					<td th:text="${book.getIsbn()}">ISBN</td>
 					<td th:text="${book.getPrice()}">Price</td>
 					<td th:text="${book.category} ? ${book.category.getName()} : ''">Category</td>
-					<td sec:authorize="hasRole('ADMIN')">
+					<td sec:authorize="hasAuthority('ADMIN')">
 						<button type="button" class="btn btn-danger" th:onclick="|window.location.href='/deletebook/${book.id}'|">Delete</button>
 					</td>	
 					<td>
