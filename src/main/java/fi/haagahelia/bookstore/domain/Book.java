@@ -99,6 +99,6 @@ public class Book {
                 ", isbn='" + isbn + '\'' +
                 ", price='" + price + '\'' +
                 ", id=" + id +
-                ", category=" + category.getName();
+                ", category=" + category;
     }
 }
